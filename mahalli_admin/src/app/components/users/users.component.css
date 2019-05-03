@@ -1,0 +1,10 @@
+.form-control{
+    width: 400px;
+    }
+    .user{
+        margin-left:20px;
+        color: #03a9f3!important;
+    }
+    .user:hover{
+        color: #fff!important;
+    }

@@ -1,0 +1,242 @@
+<div class="nav-side-menu scrollbar
+" id="style-4">
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+            <li class="nav-item" [ngClass]="{'active':pageNav==='dashBoard'}">
+                <a class="nav-link" routerLink="/dashBoard">
+                    <i class="icon-layers menu-icon"></i>
+                    <span class="menu-title">Dash Board </span>
+                </a>
+            </li>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='profile'}">
+                <a class="nav-link" routerLink="/profile">
+                    <i class="icon-layers menu-icon"></i>
+                    <span class="menu-title">My Profile </span>
+                </a>
+            </li>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='categorie' || pageNav=== 'addcategorie'}"
+                *ngIf="showCat">
+                <a class="nav-link" routerLink="/category">
+                    <i class="icon-layers menu-icon"></i>
+                    <span class="menu-title">Categories </span>
+                </a>
+            </li>
+
+            <li class="nav-item" [ngClass]="{'active':pageNav==='subcategorie' || pageNav==='addsubcategorie'}"
+                *ngIf="showSubCat">
+                <a class="nav-link" routerLink="/subcategory">
+                    <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
+                    <span class="menu-title sub">Sub Categories </span>
+                </a>
+            </li>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='offers' || pageNav==='addOffers'}" *ngIf="showCoupon">
+                <a class="nav-link" routerLink="/offers">
+                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                    <span class="menu-title sub">Coupon Management</span>
+                </a>
+            </li>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='products' || pageNav==='addproducts'}"
+                *ngIf="showproducts">
+                <a class="nav-link" routerLink="/prducts">
+                    <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                    <span class="menu-title sub">Products</span>
+                </a>
+            </li>
+            <li data-toggle="collapse" data-target="#banners" class="collapsed active"
+                [ngClass]="{'active':pageNav==='banner' || pageNav==='addbestDeals'}" style="margin-left:2px;"
+                *ngIf="banners">
+                <a class="sub"> <i class="fa fa-picture-o" aria-hidden="true"></i> <span class="sub"></span>Banners
+                    <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse keep-inside-clicks-open'" id="banners" *ngIf="banners">
+                <li routerLink="/banner" routerLinkActive='active'><a>Main Banners</a></li>
+                <!-- <li routerLink="/bestBrands" routerLinkActive='active'><a>Branded banners</a></li> -->
+                <!-- <li routerLink="/offersBanners" routerLinkActive='active'><a>Featured offers</a></li>
+                <li routerLink="/bestDeals" routerLinkActive='active'><a>Best Deals</a></li>
+                <li routerLink="/bestDiscount" routerLinkActive='active'><a>Best Discounts</a></li>
+                <li routerLink="/bestAppliances" routerLinkActive='active'><a>Best Appliances</a></li>
+                <li routerLink="/bestDiscountAppliances" routerLinkActive='active'><a>Best Discount Appliances</a></li> -->
+                <!-- <li routerLink="/bestDiscountAppliances" routerLinkActive='active'><a>Popular Brands</a></li> -->
+                <li routerLink="/featureBrands" routerLinkActive='active'><a>Feature brands</a></li>
+                <li routerLink="/DummyBanner" routerLinkActive='active'><a>Dummy Banner</a></li>
+                <li routerLink="/BrandCategories" routerLinkActive='active'><a>Brand Categories</a></li>
+                <li routerLink="/dummyBannerU" routerLinkActive='active'><a class="userDummy">UserGrocery Dummy
+                        Banner</a></li>
+                <!-- <li routerLink="/offersBanners" routerLinkActive='active'><a>Featured offers</a></li> -->
+                <!-- <li routerLink="/helpBanners" routerLinkActive='active'><a>Help Banners</a></li> -->
+            </ul>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='users' || pageNav==='addusers'}" *ngIf="userList">
+                <a class="nav-link" routerLink="/users">
+                    <i class="icon-people menu-icon"></i>
+                    <span class="menu-title">User List </span>
+                </a>
+            </li>
+
+            <li class="nav-item"
+                [ngClass]="{'active':pageNav==='wholesellers' || pageNav==='addwholesellers' || pageNav==='salerproducts'}"
+                *ngIf="wholeList">
+                <a class="nav-link" routerLink="/wholesellers">
+                    <i class="icon-people menu-icon"></i>
+                    <span class="menu-title">Wholesellers List </span>
+                </a>
+            </li>
+            <!-- <li class="nav-item" [ngClass]="{'active':pageNav==='salerproducts' || pageNav==='salerproducts'}">
+                <a class="nav-link" routerLink="/salerproducts">
+                    <i class="icon-people menu-icon"></i>
+                    <span class="menu-title">Wholesellers Products </span>
+                </a>
+            </li> -->
+            <!-- <li class="nav-item" [ngClass]="{'active':pageNav==='vendors' || pageNav==='addvendors' || pageNav==='vendorProds'}" *ngIf="vendorList">
+                <a class="nav-link" routerLink="/vendors">
+                    <i class="icon-people menu-icon"></i>
+                    <span class="menu-title">Vendors List </span>
+                </a>
+            </li> -->
+            <li data-toggle="collapse" data-target="#vendor" class="collapsed active"
+                [ngClass]="{'active':pageNav==='vendors' || pageNav==='approvalProds' || pageNav==='vendorProds'}"
+                style="margin-left:2px;" *ngIf="vendorsList">
+                <a class="sub"> <i class="fa fa-book" aria-hidden="true"></i> <span class="sub"></span>Vendors
+                    <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse keep-inside-clicks-open'" id="vendor" *ngIf="vendorsList">
+                <li routerLink="/vendors" routerLinkActive='active'><a>Vendors List</a></li>
+                <li routerLink="/approvalProds" routerLinkActive='active'><a>Products For Approval</a></li>
+
+            </ul>
+
+            <li class="nav-item" [ngClass]="{'active':pageNav==='vendrorders'}" *ngIf="vendorOrds">
+                <a class="nav-link" routerLink="/vendrorders">
+                    <i class="icon-drawer menu-icon"></i>
+                    <span class="menu-title">Vendor Orders </span>
+                </a>
+            </li>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='userorders'}" *ngIf="userOrds">
+                <a class="nav-link" routerLink="/userorders">
+                    <i class="icon-drawer menu-icon"></i>
+                    <span class="menu-title">User Orders </span>
+                </a>
+            </li>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='suggestedProds'}" *ngIf="suggestedProds">
+                <a class="nav-link" routerLink="/suggestedProds">
+                    <i class="icon-layers menu-icon"></i>
+                    <span class="menu-title">Suggested Products </span>
+                </a>
+            </li>
+            <li data-toggle="collapse" data-target="#content" class="collapsed active"
+                [ngClass]="{'active':pageNav==='content'}" style="margin-left:2px;" *ngIf="content">
+                <a class="sub"> <i class="fa fa-book" aria-hidden="true"></i> <span class="sub"></span>Content
+                    Management
+                    <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse keep-inside-clicks-open'" id="content" *ngIf="content">
+                <li routerLink="/aboutUs" routerLinkActive='active'><a>About Mahali</a></li>
+                <!-- <li routerLink="/bestDeals" routerLinkActive='active'><a>Best Deals</a></li>
+                <li routerLink="/bestDiscount" routerLinkActive='active'><a>Best Discount</a></li>
+                <li routerLink="/bestAppliances" routerLinkActive='active'><a>Best Appliances</a></li>
+                <li routerLink="/bestDiscountAppliances" routerLinkActive='active'><a>Best Discount Appliances</a></li> -->
+                <li routerLink="/addcontent" routerLinkActive='active'><a>Terms & Conditions</a></li>
+                <li routerLink="/privacy" routerLinkActive='active'><a>Privacy Policy</a></li>
+                <li routerLink="/topSellers" routerLinkActive='active'><a>Top Sellers</a></li>
+                <li routerLink="/ourBlog" routerLinkActive='active'><a>Our Blog</a></li>
+                <li routerLink="/newsLetter" routerLinkActive='active'><a>News Letter</a></li>
+                <!-- <li routerLink="/helpBanners" routerLinkActive='active'><a>Help Banners</a></li> -->
+            </ul>
+            <li data-toggle="collapse" data-target="#comission" class="collapsed active"
+                [ngClass]="{'active':pageNav==='comission'}" style="margin-left:2px;" *ngIf="comission">
+                <a class="sub commision"> <i class="fa fa-book" aria-hidden="true"></i> <span
+                        class="sub"></span>Commision
+                    Management
+                    <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse keep-inside-clicks-open'" id="comission" *ngIf="comission">
+                <li routerLink="/VendorCommision" routerLinkActive='active'><a>Vendor</a></li>
+                <li routerLink="/wholeCommision" routerLinkActive='active'><a>Wholeseler</a></li>
+                <!-- <li routerLink="/bestDeals" routerLinkActive='active'><a>Best Deals</a></li>
+                <li routerLink="/bestDiscount" routerLinkActive='active'><a>Best Discount</a></li>
+                <li routerLink="/bestAppliances" routerLinkActive='active'><a>Best Appliances</a></li>
+                <li routerLink="/bestDiscountAppliances" routerLinkActive='active'><a>Best Discount Appliances</a></li> -->
+                <!-- <li routerLink="/addcontent" routerLinkActive='active'><a>Terms & Conditions</a></li>
+                <li routerLink="/privacy" routerLinkActive='active'><a>Privacy Policy</a></li>
+                <li routerLink="/topSellers" routerLinkActive='active'><a>Top Sellers</a></li>
+                <li routerLink="/ourBlog" routerLinkActive='active'><a>Our Blog</a></li>
+                <li routerLink="/newsLetter" routerLinkActive='active'><a>News Letter</a></li> -->
+                <!-- <li routerLink="/helpBanners" routerLinkActive='active'><a>Help Banners</a></li> -->
+            </ul>
+            <!-- <li class="nav-item" [ngClass]="{'active':pageNav==='banner' || pageNav==='addbanner'}">
+                <a class="nav-link" routerLink="/banner">
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    <span class="menu-title sub">Banners</span>
+                </a>
+            </li> -->
+
+            <!-- <li class="nav-item" [ngClass]="{'active':pageNav==='location'}">
+                <a class="nav-link" routerLink="/location">
+                    <i class="fa fa-map-marker"></i>
+                    <span class="menu-title sub">Location Management</span>
+                </a>
+            </li> -->
+
+            <!-- <li class="nav-item" [ngClass]="{'active':pageNav==='delivery' || pageNav==='addDelivery'}">
+                <a class="nav-link" routerLink="/delivery">
+                    <i class="fa fa-truck" aria-hidden="true"></i>
+                    <span class="menu-title sub">Delivery Handling</span>
+                </a>
+            </li>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='slot' || pageNav==='addslot'}">
+                <a class="nav-link" routerLink="/slot">
+                    <i class="fa fa-truck" aria-hidden="true"></i>
+                    <span class="menu-title sub">Delivery Slot</span>
+                </a>
+            </li>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='orders'}">
+                <a class="nav-link" routerLink="/orders">
+                    <i class="icon-drawer menu-icon"></i>
+                    <span class="menu-title">Orders </span>
+                </a>
+            </li>
+            <li data-toggle="collapse" data-target="#products" class="collapsed active" [ngClass]="{'active':pageNav==='content' || pageNav==='addcontent'}">
+                <a class="sub"><i class="fa fa-book" aria-hidden="true"></i> <span class="sub"></span>Content Management
+                    <span class="arrow"></span></a>
+            </li> -->
+            <!-- <ul class="sub-menu collapse" id="products">
+                <li routerLink="/addcontent" routerLinkActive='active'><a>Terms & Conditions</a></li>
+                <li routerLink="/aboutUs" routerLinkActive='active'><a>About Us</a></li>
+                <li routerLink="/deliveryInfo" routerLinkActive='active'><a>Delivery Information</a></li>
+                <li routerLink="/privacy" routerLinkActive='active'><a>Privacy & Policy</a></li>
+               
+            </ul>
+            <li class="nav-item" [ngClass]="{'active':pageNav==='users' || pageNav==='addusers'}">
+                <a class="nav-link" routerLink="/users">
+                    <i class="icon-people menu-icon"></i>
+                    <span class="menu-title">Loyalty Management</span>
+                </a>
+            </li> -->
+
+            <!-- <li class="nav-item" [ngClass]="{'active':pageNav==='wholesellers' || pageNav==='addwholesellers'}">
+                    <a class="nav-link" routerLink="/wholesellers">
+                        <i class="icon-people menu-icon"></i>
+                        <span class="menu-title">Wholesellers List </span>
+                    </a>
+                </li> -->
+            <li class="nav-item" [ngClass]="{'active':pageNav==='getStaff'|| pageNav==='staff' }" *ngIf="staff">
+                <a class="nav-link" routerLink="/getStaff">
+                    <i class="icon-layers menu-icon"></i>
+                    <span class="menu-title">Staff </span>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="notifications">
+                <a class="nav-link">
+                    <i class="icon-layers menu-icon"></i>
+                    <span class="menu-title">Notifications </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="logOut()">
+                    <i class="icon-power menu-icon"></i>
+                    <span class="menu-title">Logout </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    <logo-nav></logo-nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <!-- partial:partials/_settings-panel.html -->
+            <header-nav></header-nav>
+            <profile-nav></profile-nav>
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- <a href="" id="show" class="btn  btn-maron" style="float: right">Export To Excel</a> -->
+                        <a routerLink="/addOffers" (click)="addCoupon('')" id="show" class="btn  btn-maron" style="float: right">Add
+                            Coupon
+                        </a>
+                        <h4 class="card-title">
+                            Total Coupons </h4>
+                        <span>
+                            <input class="form-control" type="text" placeholder="Search.." name="search" [(ngModel)]="filter"></span>
+                        <br />
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="order-listing" class="table " style="text-align: center">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>S.no</th>
+                                                <th>Coupon Code</th>
+                                                <th>Discount Type</th>
+                                                <th>Amount</th>
+                                                <th>Percentage</th>
+                                                <th>Total Count</th>
+                                                <th>Up to </th>
+                                                <!-- <th>Logo</th> -->
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="todo-list" *ngFor="let coupons of coupons | filter:filter | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{coupons.voucher_code}}</td>
+                                                <td>{{coupons.discount_type===1?'Percentage':'Flat' }}</td>
+                                                <td>{{coupons.discount_amount}}</td>
+                                                <td>{{coupons.discount_percentage}}</td>
+                                                <td>{{coupons.total_count}}</td>
+                                                <td>{{coupons.minimum_value}}</td>
+
+                                                <td>
+                                                    <a routerLink="/addOffers" class="btn btn-outline-primary coupon-margin" (click)="editOffer(coupons.id)">Edit</a>
+                                                    <a class="btn btn-outline-primary vendor-delete" (click)="deleteVoucher(coupons.id)">Delete</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <pagination-controls (pageChange)="p = $event" style="float:right; margin-top:15px;"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
+                        <a routerLink="#">Mahali </a>. All rights reserved. </span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+
+                    </span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

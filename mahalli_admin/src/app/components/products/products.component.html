@@ -1,0 +1,222 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    <logo-nav></logo-nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <!-- partial:partials/_settings-panel.html -->
+            <header-nav></header-nav>
+            <profile-nav></profile-nav>
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- <div class="buttons" style="float:right">
+                <button class="btn btn-maron">Import to Excel</button>
+                <button class="btn btn-maron">Export to Excel</button>
+            </div> -->
+                        <a (click)="addprod()" id="show" class="btn btn-maron" style="float: right">Add
+                            Product
+                        </a>
+                        <!-- <a id=" show " class="btn btn-maron btn-import " style="float: right; "><label
+                                for="imageUpload ">Import
+                                to Excel
+                            </label><input type="file " id="imageUpload " style="display: none "
+                                (change)=fileEvent($event,paginationValues.current)></a> -->
+                        <a (click)="exportAsXLSX() " id="show " class="btn btn-maron " style="float: right ">Export to
+                            Excel
+                        </a>
+                        <h4 class="card-title ">Products </h4>
+                        <span>
+                            <input class="form-control " type="text " placeholder="Search.. " name="search
+                            " [(ngModel)]="filter "></span>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-maron tab" (click)="getGroceryProds()"
+                                    [ngStyle]="{'background-color':showGroceryProds===true ? 'blue'  :  'white'}">Grocery
+                                    Products
+
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-maron tab" (click)="getEcomProds()"
+                                    [ngStyle]="{'background-color':showEcomProds===true ? 'blue'  :  'white'}">Ecommerce
+                                    Products
+
+                                </button>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row ">
+                            <div class="col-12 ">
+                                <div class="table-responsive ">
+                                    <table id="order-listing " class="table " style="text-align: center "
+                                        *ngIf="showGroceryProds">
+                                        <thead class="thead-dark ">
+                                            <tr>
+                                                <th>S.no</th>
+                                                <th>Category Name </th>
+                                                <th>Sub Category Name </th>
+                                                <th>Product Name </th>
+                                                <th>Sku Images </th>
+                                                <th *ngIf="role==='Admin' ">Live Status </th>
+                                                <th>Actions </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="todo-list " *ngFor="let prod of product | filter:filter | paginate:
+                            { itemsPerPage: 10, currentPage: p };let i=index ">
+                                                <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
+                                                <td>{{i+1}}</td>
+                                                <td>{{prod.category_name}}</td>
+                                                <td>{{prod.sub_category_name}} </td>
+                                                <td>{{prod.product_name}}</td>
+                                                <td>
+                                                    <img [src]="prod.skuImg " />
+                                                </td>
+                                                <td *ngIf="role==='Admin' ">
+                                                    <button class="btn remove btn-outline-primary " [value]="prod.approval
+                            " #btn (click)="status(btn,prod?.product_id,prod.approval) ">{{btn.value}}</button>
+                                                </td>
+                                                <td>
+                                                    <!-- <a routerLink="/addprducts " class="btn btn-outline-primary
+                            " (click)="editProd(prod.title,prod.category_id,prod.main_cat,prod.id,prod.sub_cat,prod.category2_id) ">Edit</a> -->
+                                                    <a *ngIf="role==='wholesaler' " routerLink="/addprducts " class="btn btn-outline-primary
+                            " (click)="editProd(prod.product_id) ">Edit</a>
+
+                                                    <button class="btn remove btn-outline-primary "
+                                                        (click)="deleteProduct(prod.product_id) ">Remove
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table id="order-listing " class="table " style="text-align: center "
+                                        *ngIf="showEcomProds">
+                                        <thead class="thead-dark ">
+                                            <tr>
+                                                <th>S.no</th>
+                                                <th>Category Name </th>
+                                                <th>Sub Category Name </th>
+                                                <th>Product Name </th>
+                                                <th>Sku Images </th>
+                                                <th *ngIf="role==='Admin' ">Live Status </th>
+                                                <th>Actions </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="todo-list " *ngFor="let prod of product | filter:filter | paginate:
+                            { itemsPerPage: 10, currentPage: p };let i=index ">
+                                                <!-- | paginate: { itemsPerPage: 10, currentPage: p } -->
+                                                <td>{{i+1}}</td>
+                                                <td>{{prod.category_name}}</td>
+                                                <td>{{prod.sub_category_name}} </td>
+                                                <td>{{prod.product_name}}</td>
+                                                <td>
+                                                    <img [src]="prod.skuImg " />
+                                                </td>
+                                                <td *ngIf="role==='Admin' ">
+                                                    <button class="btn remove btn-outline-primary " [value]="prod.approval
+                            " #btn (click)="status(btn,prod?.product_id,prod.approval) ">{{btn.value}}</button>
+                                                </td>
+                                                <td>
+                                                    <!-- <a routerLink="/addprducts " class="btn btn-outline-primary
+                            " (click)="editProd(prod.title,prod.category_id,prod.main_cat,prod.id,prod.sub_cat,prod.category2_id) ">Edit</a> -->
+                                                    <a routerLink="/addprducts " *ngIf="role==='wholesaler' " class="btn btn-outline-primary
+                            " (click)="editProd(prod.product_id) ">Edit</a>
+
+                                                    <button class="btn remove btn-outline-primary "
+                                                        (click)="deleteProduct(prod.product_id) ">Remove
+                                                    </button>
+                                                </td>
+                                                <td *ngIf="prod.result==='No recordes found'">
+                                                    No records found
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- <table id="order-listing " class="table " style="text-align: center " *ngIf="showWholeProds">
+                                        <thead class="thead-dark ">
+                                            <tr>
+                                                <th>S.no</th>
+                                                <th>Category Name </th>
+                                                <th>Sub Category Name </th>
+                                                <th>Product Name </th>
+                                                <th>Sku Images </th>
+                                                <th *ngIf="role==='Admin' ">Live Status </th>
+                                                <th>Actions </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="todo-list " *ngFor="let prod of product | filter:filter | paginate:
+                            { itemsPerPage: 10, currentPage: p };let i=index ">
+
+                                                <td>{{i+1}}</td>
+                                                <td>{{prod.category_name}}</td>
+                                                <td>{{prod.sub_category_name}} </td>
+                                                <td>{{prod.product_name}}</td>
+                                                <td>
+                                                    <img [src]="prod.skuImg " />
+                                                </td>
+                                                <td *ngIf="role==='Admin' ">
+                                                    <button class="btn remove btn-outline-primary " [value]="prod.approval
+                            " #btn (click)="status(btn,prod?.product_id,prod.approval) ">{{btn.value}}</button>
+                                                </td>
+                                                <td>
+
+                                                    <a routerLink="/addprducts " class="btn btn-outline-primary
+                            " (click)="editProd(prod.product_id) ">Edit</a>
+
+                                                    <button class="btn remove btn-outline-primary " (click)="deleteProduct(prod.product_id) ">Remove
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table> -->
+                                    <pagination-controls (pageChange)="p = $event"
+                                        style="float:right; margin-top:15px;"></pagination-controls>
+                                    <!-- <div class="pagination " style="float:right ">
+                                        <a href="# ">&laquo;</a>
+                                        <a href="# ">1</a>
+                                        <a href="# " class="active ">2</a>
+                                        <a href="# ">3</a>
+                                        <a href="# ">4</a>
+                                        <a href="# ">5</a>
+                                        <a href="# ">6</a>
+                                        <a href="# ">&raquo;</a>
+                                    </div> -->
+                                    <!-- <div class="pagination " style="float:right ">
+                                        <a>&laquo;</a>
+                                        <a *ngFor="let page of pagination;let i=index " (click)="changePage(page,i)
+                            " [ngClass]="{ 'active' : selectedpage===i } ">{{page}}</a>
+                                        <a>&raquo;</a>
+                                    </div> -->
+                                    <!-- <label *ngFor="let page of pagination " (click)="changePage(page) ">{{page}} &nbsp;&nbsp;</label> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer ">
+                <div class="container-fluid clearfix ">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block ">Copyright © 2019
+                        <a routerLink="# ">Mahali </a>. All rights reserved. </span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center ">
+                    </span>
+                </div>
+            </footer>
+
+            <!-- partial -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

@@ -1,0 +1,32 @@
+.add-vendor-btn{
+    margin-top: 20px;
+    background-color: #0d3d66;
+}
+.add-vendor-btn:hover{
+    background-color: #0d3d66;
+}
+
+.form-group input{
+    border-radius: 5px;
+}
+.vendor-delete{
+    margin-left: 15px;
+    color: #03a9f3;
+}
+/* .form-control {
+    width: 400px;
+} */
+.vendor-button{
+    background-color: #0d3d66 !important;
+}
+.btn-outline-primary{
+    color: #03a9f3 !important;
+}
+.btn-outline-primary:hover{
+    color: #fff !important;
+}
+.order-status{
+    background-image: url(/assets/images/down-arrow.png)!important;
+    background-position: 96% 50% !important;
+    background-repeat: no-repeat !important;
+}

@@ -1,0 +1,51 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <logo-nav></logo-nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <header-nav></header-nav>
+            <profile-nav></profile-nav>
+            <!-- partial -->
+
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Edit Suggested Product </h4>
+                                <a routerLink="/suggestedProds" id="show" class="btn  btn-maron" style="float: right;    margin-top: -45px;">Back</a>
+                                <form class="cmxform" id="signupForm" method="get" action="#" #myForm="ngForm" novalidate>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="firstname">Product Name</label>
+                                                <input id="category" class="form-control" type="text" [(ngModel)]="prodName" name="prodName" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary vendor-button" (click)="updateProduct()">Update
+
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
+                        <a routerLink="#">Mahali </a>. All rights reserved. </span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                    </span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

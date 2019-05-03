@@ -1,0 +1,35 @@
+.form-control{
+    border-radius:5px;
+    border: 1px solid #ddd;
+}
+.form-group label{
+    font-size: 16px;
+    line-height: 2;
+}
+.vendor-button{
+    margin-top: 20px;
+    background-color:#0d3d66;
+}
+.vendor-button:hover{
+    background-color: #0d3d66;
+}
+.form-control{
+    width: 400px;
+}
+.subcat{
+    width: 12% !important;
+}
+textarea{
+    width: 400px !important;
+}
+.selected{
+    border:red;
+}
+.form-control{
+    border-color: #495057;
+}
+#check1 {
+    margin-top: 9px !important;
+    margin-left: 12px !important;
+}
+

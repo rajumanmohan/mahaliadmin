@@ -1,0 +1,13 @@
+.vendor-button{
+    background-color: #0d3d66 !important;
+}
+.form-control {
+    width: 400px;
+}
+.vendor-delete{
+    margin-left: 15px;
+    color: #03a9f3!important;
+}
+.vendor-button:hover{
+    color: #fff!important;
+}

@@ -1,0 +1,289 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    <logo-nav></logo-nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <!-- partial:partials/_settings-panel.html -->
+            <header-nav></header-nav>
+            <profile-nav></profile-nav>
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">{{banTitle}}</h4>
+                                <a routerLink="/banner" id="show" class="btn  btn-maron"
+                                    style="float: right;    margin-top: -45px;">Back</a>
+                                <form class="cmxform" id="signupForm" method="get" action="#">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="sel1">Title</label>
+                                            <!-- <div class="form-group">
+                                                <label for="exampleInputEmail1">Select Home Section Name</label>
+                                                <select [selected]="ContentName" class="form-control "
+                                                    id="exampleSelectPrimary" (change)="changeCat($event.target.value)"
+                                                    [ngModelOptions]="{standalone: true}" name="ContentName">
+                                                    <option value="1" disabled selected hidden> Select Home Section Name
+                                                    </option>
+                                                    <option *ngFor="let response of subSectionData"
+                                                        [selected]="response.content_name==ContentName"
+                                                        [value]="response.content_name">
+                                                        {{response.content_name}}</option>
+                                                </select>
+                                            </div> -->
+                                            <select class="form-control border-primary" id="sel1"
+                                                (change)="bannerPosition($event.target.value)" [selected]="BannerType1">
+                                                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                                <option value="" disabled>Select banner type</option>
+                                                <option *ngFor="let ban of BannersData" [value]="ban"
+                                                    [selected]="ban==BannerType1">
+                                                    {{ban}}
+                                                </option>
+                                                <!-- <option value="Main Banners">Main Banners
+                                                </option>
+                                                <option value="Branded banners">Branded banners</option>
+                                                <option value="Featured banners">Featured banners</option>
+                                                <option value="Best Deals">Best Deals</option>
+                                                <option value="Best Discounts">Best Discounts</option>
+                                                <option value="Best Appliances">Best Appliances</option>
+                                                <option value="Best Discount Appliances">Best Discount Appliances
+                                                </option>
+                                                <option value="Popular Brands">Popular Brands</option>
+                                                <option value="Feature brands">Feature brands</option>
+                                                <option value="Dummy Banner">Dummy Banner</option> -->
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12">
+                                                <!-- <div class="form-group" style="margin-top:20px;margin-bottom:25px;">
+                                                    <label for="firstname">Add Banners:
+                                                        <button class="btn btn-primary" (click)=sku()>+</button>
+                                                    </label>
+                                                </div> -->
+                                                <!-- <div class="" *ngFor="let skuValues of skusData;let i= index"
+                                                    style="margin-bottom:30px;border: solid 1px lightgrey;padding: 20px"> -->
+                                                <div class="">
+                                                    <div class="">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="exampleInputEmail1">Name</label>
+                                                                    <input id="category" class="form-control"
+                                                                        type="text" placeholder="name"
+                                                                        [(ngModel)]="name"
+                                                                        [ngModelOptions]="{standalone:true}" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <!-- <label for="exampleInputEmail1">Type</label>
+                                                                        <input id="category" class="form-control" type="text" placeholder="type" [(ngModel)]="skuValues.type" [ngModelOptions]="{standalone:true}"
+                                                                        /> -->
+                                                                    <label for="sel1">Select Type</label>
+                                                                    <select class="form-control border-primary"
+                                                                        id="sel1" name="type" [(ngModel)]="type"
+                                                                        (change)="onChange($event.target.value,i)">
+                                                                        <i class="fa fa-chevron-down"
+                                                                            aria-hidden="true"></i>
+                                                                        <option value="" disabled selected hidden>
+                                                                            Select
+                                                                            Type
+                                                                        </option>
+                                                                        <option value="Categories">Categories
+                                                                        </option>
+                                                                        <option value="Subcategories">Subcategories
+                                                                        </option>
+                                                                        <!-- <option value="Product">Product</option> -->
+                                                                        <!-- <option value="sku">sku</option>
+                                                                            <option value="Brand">Brand</option> -->
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group" *ngIf="category">
+                                                                    <label for="firstname">Category :</label>
+                                                                    <div class="form-group">
+                                                                        <select required
+                                                                            class="form-control border-primary"
+                                                                            id="exampleSelectPrimary"
+                                                                            name="categoryName"
+                                                                            (change)="changeCat($event.target.value,i,'cat')">
+                                                                            <option value="" disabled selected hidden>
+                                                                                Select
+                                                                                Category
+                                                                            </option>
+                                                                            <option *ngFor="let cat of categorydata"
+                                                                                value="{{cat.id}}">
+                                                                                {{cat.category_name}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label>{{target}} </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" *ngIf="subcategory">
+                                                                    <label for="firstname">Sub Category :</label>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control border-primary"
+                                                                            id="exampleSelectPrimary"
+                                                                            [(ngModel)]="subCatName" name="subCatName"
+                                                                            (change)="changeCat($event.target.value,i,'subcat')">
+                                                                            <option value="" disabled selected hidden>
+                                                                                Select
+                                                                                Sub Category</option>
+                                                                            <option
+                                                                                *ngFor="let subCat of subCategoryName"
+                                                                                value="{{subCat.id}}">
+                                                                                {{subCat.sub_category_name}}
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label>{{target}} </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group" *ngIf="product">
+                                                                    <label for="firstname">Product :</label>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control border-primary"
+                                                                            id="exampleSelectPrimary"
+                                                                            [(ngModel)]="prodName"
+                                                                            (change)="changeCat($event.target.value,i,'prod')"
+                                                                            [ngModelOptions]="{standalone: true}"
+                                                                            name="prodName12">
+                                                                            <option value="" disabled selected hidden>
+                                                                                Select
+                                                                                Product
+                                                                            </option>
+                                                                            <option *ngFor="let product of productData"
+                                                                                value="{{product.product_id}}"
+                                                                                name="{{product.product_name}}">
+                                                                                {{product.product_name}}</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label>{{target}} </label>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- <div class="form-group" *ngIf="skus">
+                                                                    <label for="firstname" name="prodName">Sku</label>
+                                                                    <input id="category" class="form-control"
+                                                                        type="text" />
+                                                                </div>
+                                                                <div class="form-group" *ngIf="brand">
+                                                                    <label for="firstname" name="prodName">Brand</label>
+                                                                    <input id="category" class="form-control"
+                                                                        type="text" />
+                                                                </div> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="sel1">Banner Type</label>
+                                                                    <select class="form-control border-primary"
+                                                                        id="sel1" [selected]="banner_type"
+                                                                        (change)="bannerType($event.target.value)"
+                                                                        [ngModelOptions]="{standalone: true}">
+                                                                        <i class="fa fa-chevron-down"
+                                                                            aria-hidden="true"></i>
+                                                                        <option value="" disabled>Select banner type
+                                                                        </option>
+                                                                        <option value="0">Vendor Grocery</option>
+                                                                        <option value="1">Vendor Ecom</option>
+                                                                        <option value="2">User Grocery</option>
+                                                                        <option value="3">User Ecom</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="exampleInputEmail1">Mobile
+                                                                        Banner</label>
+                                                                    <input class="form-control" type="file"
+                                                                        accept="image/*"
+                                                                        (change)="changeListener($event,i)"
+                                                                        [(ngModel)]="mobImg" name="mobImg">
+                                                                    <div *ngIf="image">
+                                                                        <img src="{{image}}" alt="" width="100"
+                                                                            height="100"
+                                                                            style="border: solid 1px;margin-top: 2%;">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <img src="{{mobImg}}" alt="" width="100"
+                                                                            height="100"
+                                                                            style="border: solid 1px;margin-top: 2%;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="exampleInputEmail1">website
+                                                                        Banner</label>
+                                                                    <input class="form-control" type="file"
+                                                                        accept="image1/*"
+                                                                        (change)="changeListener1($event,i)"
+                                                                        [(ngModel)]="webImg" name="webImg">
+                                                                    <div *ngIf="image1">
+                                                                        <img src="{{image1}}" alt="" width="100"
+                                                                            height="100"
+                                                                            style="border: solid 1px;margin-top: 2%;">
+                                                                    </div>
+                                                                    <div *ngIf="webImg">
+                                                                        <img src="{{webImg}}" alt="" width="100"
+                                                                            height="100"
+                                                                            style="border: solid 1px;margin-top: 2%;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="col-md-4">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary delete_banner"
+                                                                    (click)="deleteSku(i)"
+                                                                    style="margin-top: 25px;">Delete
+                                                                    Banner
+                                                                </button>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- </div> -->
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary vendor-button" *ngIf="addbanners"
+                                            (click)="addbanner()">
+                                            Add Banner
+                                        </button>
+                                        <button type="submit" class="btn btn-primary vendor-button" *ngIf="!addbanners"
+                                            (click)="updateBanner()">
+                                            Update Banner
+                                        </button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
+                        <a routerLink="#">Mahali </a>. All rights reserved. </span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                    </span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

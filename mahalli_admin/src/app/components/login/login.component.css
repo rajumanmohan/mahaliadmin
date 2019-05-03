@@ -1,0 +1,117 @@
+   .section{
+    /* background-image: url("/assets/images/bg-01.jpg"); */
+    width: 100%;
+    height:100vh;
+   }
+    .card{
+        width: 45%;
+        margin: 0 auto;
+        margin-top: 5%;
+        border-radius: 10px;
+        background: -webkit-linear-gradient(top, #7579ff, #b224ef);
+    }
+    .login-user img{
+        width:20%;
+        margin-top: 30px;
+    }
+    .login-user h3{
+        color: #fff;
+        margin-top: 10px;
+    }
+.forgotclass {
+    border: 1px solid white !important;
+    color: #ffffff;
+    background: #002838;
+    padding-left: 15px;
+}
+    .form-group{
+        width:90%;
+        margin: 0 auto;
+        margin-top: 25px;
+    }
+    .form-group label{
+        color: #ffffff;
+        font-size: 16px;
+        padding-bottom: 10px;
+    }
+    .form-check{
+        margin-left: 50px;
+        margin-top: 25px;
+    }
+    .login-btn button{
+        margin-top: 25px;
+        margin-bottom:35px;
+        width: 25%;
+        color: black;
+        background-color: #fff;
+        border-color: #fff;
+        border-radius: 20px;
+        font-size: 18px;
+    } 
+    .login-btn button:active{
+        color: #000;
+        background-color: #ffffff;
+        border-color: #ffffff;
+    }
+    .form-control{
+        border: none;
+    }
+    
+    .checkbox-inline{
+        margin-top: 20px;
+        color: #fff;
+        margin-left: 50px;
+    }
+    .checkbox-inline input{
+        margin-right: 10px;
+    }
+        
+    
+    .font-weight-medium{
+        width: 80%;
+        height: 49px;
+        margin: 0 auto;
+    }
+    /* input#exampleInputEmail1,input#exampleInputPassword1 {
+        background: #fff !important;
+    }
+    */
+   #exampleSelectPrimary option{
+        background: gray;
+        cursor: pointer;
+    }
+    .dp {
+        padding: 50px;
+    }
+    .login-fields input {
+        border:1px solid #ffffff!important;
+        padding-left: 10px;
+        }
+        .login-fields select {
+        border:1px solid #ffffff!important;
+        padding-left: 10px;
+        }
+        .login-fields i{
+        top: calc((100% - 0px) / 2) !important;
+        }
+
+        .selectwrap:after{
+            content:'\025bc';
+            text-align: center;
+            line-height:32px;
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            right: 5px;
+            top: 29px;
+            pointer-events: none;
+            }
+            .text-left1 {
+                text-align: left !important;
+            }
+            .otp-screen {
+                text-align: center;
+            }
+   .submt-btn {
+    background: #ff9b30 !important;
+   }

@@ -1,0 +1,131 @@
+<div class="container-scroller">
+  <!-- partial:partials/_navbar.html -->
+
+  <logo-nav></logo-nav>
+
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <div class="row row-offcanvas row-offcanvas-right">
+      <!-- partial:partials/_settings-panel.html -->
+      <header-nav></header-nav>
+      <profile-nav></profile-nav>
+
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+
+      <!-- partial -->
+      <div class="content-wrapper">
+        <div class="card">
+          <div class="card-body">
+            <!-- <a (click)="addCat('','')" id="show" class="btn  btn-maron" style="float: right">Add Category</a> -->
+            <h4 class="card-title">{{title}} Comission Management </h4>
+            <span>
+              <input class="form-control" type="text" placeholder="Search.." name="search" [(ngModel)]="filter"></span>
+            <!-- <div class="row">
+              <div class="col-md-6">
+                <button class="btn btn-maron cust-b1 tab" (click)="getGroceryCats()"
+                  [ngStyle]="{'background-color':type == 'grocery' ? 'blue'  :  'white'}">Grocery
+
+                </button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-maron cust-b1 tab" (click)="getEcomCats()"
+                  [ngStyle]="{'background-color':type == 'ecommers' ? 'blue'  :  'white'}">Ecommerce
+
+                </button>
+              </div>
+            </div> -->
+            <br />
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table id="order-listing" class="table " style="text-align: center">
+                    <thead class=" thead-dark ">
+                      <tr class="todo-list ">
+                        <th>S.no</th>
+                        <th>Name</th>
+                        <th>Final Amount</th>
+                        <th>Commision To Admin</th>
+                        <th>Amount To Client </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="todo-list " *ngFor="let cat of commisionData | filter:filter | paginate:
+                                      { itemsPerPage: 10, currentPage: p }; let i=index "
+                        (click)="showOrdersByWhole(cat.id)">
+                        <td>{{i+1}}</td>
+                        <td>{{cat.first_name}}</td>
+                        <td>{{cat.final_amount}}
+                        </td>
+                        <td>{{cat.commission_to_admin}}%
+                        </td>
+                        <td>{{cat.amount_to_clint}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- <table id="order-listing" class="table " style="text-align: center">
+                    <thead class=" thead-dark ">
+                      <tr class="todo-list ">
+                        <th>S.no</th>
+                        <th>Category Name</th>
+                        <th>Category Image </th>
+                        <th>Description</th>
+                        <th>Actions </th>
+                        <th>To show in ecommerce</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="todo-list " *ngFor="let cat of category | filter:filter | paginate:
+                                      { itemsPerPage: 10, currentPage: p }; let i=index ">
+                        <td>{{i+1}}</td>
+                        <td>{{cat.category_name}}</td>
+                        <td><img [src]="cat.image_url "></td>
+                        <td class="d-inline-block text-truncate " style="max-width:200px; ">{{cat.description}}</td>
+                        <td>
+                          <a routerLink="/addcategory " class="btn btn-outline-primary
+                                      "
+                            (click)="addCat(cat.category_name,cat.id,cat.image_url,cat.description) ">View/Edit</a>
+                          <button class="btn remove btn-outline-primary " (click)="deleteCat(cat.id) ">Delete
+                          </button>
+                        </td>
+                        <td>
+                          <div class="col-md-6">
+                            <div class="form-group">
+
+                              <input type="checkbox" name="{{cat.id}}" [checked]="cat.show_in_vender=='1'"
+                                value="{{cat.id}}" [disabled]="toCheck == true" id="{{cat.id}}" data-md-icheck
+                                [ngModelOptions]="{standalone: true}"
+                                (change)="toggleVisibility($event,$event.target.value)" />
+
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table> -->
+                  <pagination-controls (pageChange)="p = $event" style="float:right; margin-top:15px;">
+                  </pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+      <footer class="footer ">
+        <div class="container-fluid clearfix ">
+          <span class="text-muted d-block text-center text-sm-left d-sm-inline-block ">Copyright © 2019
+            <a routerLink="# ">Mahali </a>. All rights reserved. </span>
+          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center ">
+          </span>
+        </div>
+      </footer>
+      <!-- partial -->
+    </div>
+    <!-- row-offcanvas ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+
+<script src="../../assets/admin-scripts/bootstrap/dist/js/bootstrap.min.js "></script>

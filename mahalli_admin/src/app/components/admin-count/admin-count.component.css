@@ -1,0 +1,22 @@
+.grid-list {
+    background: #bc3b3b;
+    padding: 4%;
+    border-radius: 12px;
+    border: 1px solid #c38888;
+    margin: 20px;
+}
+.grid-list i{
+color:#ffffff;
+}
+.grid-list h1,h6{
+color:#ffffff;
+}
+.grid-list.one {
+    background-color: green;
+}
+.grid-list.two {
+    background-color:skyblue;
+}
+.grid-list.three {
+    background-color:yellowgreen;
+}

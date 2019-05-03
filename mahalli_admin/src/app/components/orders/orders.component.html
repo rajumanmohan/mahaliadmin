@@ -1,0 +1,162 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <logo-nav></logo-nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <header-nav></header-nav>
+            <profile-nav></profile-nav>
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body" *ngIf="showVendorOrds">
+
+                        <h4 class="card-title">Vendor Orders </h4>
+                        <span>
+                            <input class="form-control" type="text" placeholder="Search.." name="search"
+                                [(ngModel)]="filter"></span>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="order-listing" class="table " style="text-align: center">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">S.No</th>
+                                                <th scope="col">Order Id</th>
+                                                <th scope="col">Order Date & Time</th>
+                                                <th scope="col">Wholeseller Name</th>
+                                                <th scope="col">Total Amount</th>
+                                                <th scope="col" *ngIf="role==='Admin'">Order Status</th>
+                                                <!-- <th scope="col" *ngIf="role==='wholesaler'">Status</th> -->
+                                                <!-- <th scope="col">Action</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="cst-topad" *ngFor="let ord of orders | filter:filter | paginate:
+                                                { itemsPerPage: 10, currentPage: p };let i = index">
+                                                <th scope="row">{{i+1}}</th>
+                                                <td (click)="orderDetails(ord.order_id)">
+                                                    {{ord.order_id}}
+                                                </td>
+                                                <td (click)="orderDetails(ord.order_id)">
+                                                    {{ord.ordered_on}} </td>
+                                                <td (click)="orderDetails(ord.order_id)">{{ord.wholesaler_id || "-"}}
+                                                </td>
+                                                <td (click)="orderDetails(ord.order_id)">BD.{{ord.billing_amount}}</td>
+                                                <td *ngIf="role==='Admin'" (click)="orderDetails(ord.order_id)">
+                                                    View</td>
+                                                <!-- <td><a class="btn btn-outline-primary" (click)="showBukedOrderDetails(ord.order_id)">View</a></td> -->
+                                                <!-- <td *ngIf="role==='wholesaler'">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <select id="company" class="form-control order-status"
+                                                                (change)="statusChange($event.target.value,ord.order_id)">
+                                                                <option disabled>select status</option>
+                                                                <option value="Placed">Placed</option>
+                                                                <option value="Processing">Processing</option>
+                                                                <option value="Out for Delivery">Out for Delivery
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </td> -->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <pagination-controls (pageChange)="p = $event"
+                                        style="float:right; margin-top:15px;"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div *ngIf="noOrd">
+                            No Orders Found
+                        </div> -->
+                    </div>
+                    <div class="card-body " *ngIf="showUserOrds ">
+
+                        <h4 class="card-title ">User Orders </h4>
+                        <span>
+                            <input class="form-control " type="text " placeholder="Search.. " name="search
+                                                                    " [(ngModel)]="filter "></span>
+                        <br />
+                        <div class="row ">
+                            <div class="col-12 ">
+                                <div class="table-responsive ">
+                                    <table id="order-listing " class="table " style="text-align: center ">
+                                        <thead class="thead-dark ">
+                                            <tr>
+                                                <th scope="col ">S.No</th>
+                                                <th scope="col ">Order Id</th>
+                                                <th scope="col ">Order Date & Time</th>
+                                                <th scope="col ">Wholeseller Name</th>
+                                                <th scope="col ">Total Amount</th>
+                                                <!-- <th scope="col ">Order Status</th> -->
+                                                <th scope="col" *ngIf="role==='wholesaler'">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <br />
+                                        <tbody>
+                                            <tr class="cst-topad " *ngFor="let ord of userOrds | filter:filter | paginate:
+                                                                    { itemsPerPage: 10, currentPage: p };let i=index ">
+                                                <th scope=" row ">{{i+1}}</th>
+                                                <td (click)="orderDetails(ord.order_id) ">
+                                                    {{ord.order_id}}
+                                                </td>
+                                                <td (click)="orderDetails(ord.order_id) ">{{ord.ordered_on}}
+                                                </td>
+                                                <td (click)="orderDetails(ord.order_id) ">{{ord.wholesaler_name}}</td>
+                                                <!-- <td>Immediate</td> -->
+                                                <td (click)="orderDetails(ord.order_id) ">{{ord.billing_amount}}</td>
+                                                <!-- <td (click)="orderDetails(ord.order_id) ">{{ord.order_status}}</td> -->
+                                                <td *ngIf="role==='wholesaler'">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <select id="company" class="form-control order-status"
+                                                                (change)="statusChange($event.target.value,ord.order_id)">
+                                                                <!-- <option disabled>select status</option> -->
+                                                                <option value="Placed">Placed</option>
+                                                                <option value="Processing">Processing</option>
+                                                                <option value="Out for Delivery">Out for Delivery
+                                                                </option>
+                                                                <option value="Decline">Cancel
+                                                                </option>
+                                                                <option value="Deliver">Delivered
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td *ngIf="ord.length===0 ">
+                                                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Data</h4>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <pagination-controls (pageChange)="p = $event"
+                                        style="float:right; margin-top:15px;"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="noOrd">
+                            No Orders Found
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer ">
+                <div class="container-fluid clearfix ">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block ">Copyright © 2018
+                        <a routerLink="# ">Mahali </a>. All rights reserved. </span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center ">
+                        <i class="mdi mdi-heart text-danger "></i>
+                    </span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

@@ -1,0 +1,12 @@
+.form-control {
+    width: 400px;
+}
+.vendor-button{
+    background-color: #0d3d66;
+}
+.todo-list td{
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

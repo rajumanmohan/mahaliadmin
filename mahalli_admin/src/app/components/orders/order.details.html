@@ -1,0 +1,141 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <logo-nav></logo-nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <header-nav></header-nav>
+            <profile-nav></profile-nav>
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Order Details </h4>
+                        <span>
+                            <input class="form-control" type="text" placeholder="Search.." name="search"
+                                [(ngModel)]="filter"></span>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table ">
+                                        <thead class=" thead-dark ">
+                                            <tr>
+                                                <th scope="col" style="font-size:18px;">Product</th>
+                                                <th scope="col" style="font-size:18px;">Name</th>
+                                                <th scope="col" style="font-size:18px;">Size</th>
+                                                <th scope="col" style="font-size:18px;">Color</th>
+                                                <th scope="col" style="font-size:18px;">Quantity</th>
+                                                <th scope="col" style="font-size:18px;">Price</th>
+                                                <!-- <th scope="col"
+                                                    *ngIf="role==='wholesaler' || type==='whole' || type==='vendor'">
+                                                    Order
+                                                    Status</th> -->
+                                                <th scope="col" *ngIf="role==='wholesaler'">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-data myorder-details">
+                                            <tr *ngFor="let orddata of ordData| filter:filter">
+                                                <td>
+                                                    <img [src]="orddata.sku_row[0].sku_images[0].sku_image">
+                                                </td>
+                                                <td>
+                                                    <p>{{orddata.product_name}}
+                                                    </p>
+                                                </td>
+                                                <td>{{orddata?.sku_row[0]?.size}}</td>
+                                                <td>{{orddata?.sku_row[0]?.filter_color}}</td>
+                                                <td>{{orddata?.quantity}}</td>
+                                                <td>BD {{orddata?.sku_row[0]?.selling_price}}</td>
+                                                <!-- <td *ngIf="role==='wholesaler' ||  type==='whole' || type==='vendor'">
+                                                    {{orddata?.order_status}}
+                                                </td> -->
+                                                <td *ngIf="role==='wholesaler'">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <select id="company" class="form-control order-status"
+                                                                (change)="statusChange($event.target.value,orddata.cart_id)">
+                                                                <!-- <option disabled>select status</option> -->
+                                                                <option value="Placed">Placed</option>
+                                                                <option value="Processing">Processing</option>
+                                                                <option value="Out for Delivery">Out for Delivery
+                                                                </option>
+                                                                <option value="Decline">Decline
+                                                                </option>
+                                                                <option value="Deliver">Deliver
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="order-details">
+                                        <th class=" thead-dark ">Shipping Address</th>
+                                    </div>
+                                    <div class="address-bar">
+                                        <h4 class="office-header">{{orderAdd.address_type}}</h4>
+                                        <p>
+                                            <i class="fa fa-map-marker"
+                                                aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{orderAdd.house_no}}
+                                            {{orderAdd.landmark}},
+                                            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{orderAdd.city}},{{orderAdd.state}}
+                                            {{orderAdd.pin_code}}
+                                        </p>
+                                        <p>
+                                            <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                                            <span>{{orderAdd.mobile_number}}</span>
+                                        </p>
+                                    </div>
+                                    <div class="order-details">
+                                        <th class=" thead-dark ">Price Details</th>
+                                    </div>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td style="font-size: 16px;">Payable Amount</td>
+                                                <td class="prod-price">
+                                                    <strong>BD {{count}}</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size: 16px;">Delivery Charges</td>
+                                                <td class="prod-price">
+                                                    <strong>BD ***</strong>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size: 16px;">Sub Total</td>
+                                                <td class="prod-price">(COD)
+                                                    <strong>BD {{count}}</strong>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- <pagination-controls (pageChange)="p = $event" style="float:right; margin-top:15px;"></pagination-controls> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
+                        <a routerLink="#">Mahali </a>. All rights reserved. </span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                        <i class="mdi mdi-heart text-danger"></i>
+                    </span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

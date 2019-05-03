@@ -1,0 +1,9 @@
+.noRecords{
+    margin-top: 60px;
+}
+.wholesalerProd{
+    color: #03a9f3 !important;
+}
+.wholesalerProd:hover{
+    color: #fff !important;
+}

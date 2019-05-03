@@ -1,0 +1,11 @@
+.btn-seller{ 
+    background-color: #0d3d66;
+    width: 180px;
+}
+.seller{
+    margin-left:20px;
+    color: #03a9f3!important;
+}
+.seller:hover{
+    color: #fff!important;
+}

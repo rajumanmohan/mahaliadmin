@@ -1,0 +1,77 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    <logo-nav></logo-nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <!-- partial:partials/_settings-panel.html -->
+            <header-nav></header-nav>
+            <profile-nav></profile-nav>
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- <a href="" id="show" class="btn  btn-maron" style="float: right">Export To Excel</a> -->
+                        <!-- <a routerLink="/addvendors" id="show" class="btn  btn-maron" style="float: right">Add Vendor</a> -->
+                        <h4 class="card-title">
+                            Suggested Products </h4>
+                        <span>
+                            <input class="form-control" type="text" placeholder="Search.." name="search" [(ngModel)]="filter"></span>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table id="order-listing" class="table " style="text-align: center">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>S.no</th>
+                                                <th>Category Name </th>
+                                                <!-- <th>Subcategory Name </th> -->
+                                                <th>Products Name </th>
+                                                <th>Status </th>
+                                                <th>Action </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="todo-list" *ngFor="let item of suggetedData | filter:filter | paginate: { itemsPerPage: 10, currentPage: p };let i = index">
+                                                <td>{{i+1}}</td>
+                                                <td>{{item.main_cat_name || "-"}} </td>
+                                                <!-- <td>{{item.sub_cat_name || "-"}}</td> -->
+                                                <td>{{item.product_name}} </td>
+                                                <td>
+                                                    <button class="btn remove btn-outline-primary " [value]="item.status
+                            " #btn (click)="status(btn,item.id,item.status) ">{{btn.value}}</button>
+                                                </td>
+                                                <td>
+                                                    <a routerLink="/editSuggested " class="btn btn-outline-primary
+                            " (click)="editProd(item.id) ">Edit</a>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <pagination-controls (pageChange)="p = $event" style="float:right; margin-top:15px;"></pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
+                        <a routerLink="#">Mahali </a>. All rights reserved. </span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+                        <i class="mdi mdi-heart text-danger"></i>
+                    </span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

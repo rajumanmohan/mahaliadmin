@@ -1,0 +1,18 @@
+.form-control {
+    width: 400px;
+}
+.vendor-button{
+    background-color: #0d3d66;
+}
+.coupon-margin{
+    margin-right: 10px;
+}
+.btn-outline-primary{
+    color: #03a9f3 !important;
+}
+.btn-outline-primary:hover{
+    color: #fff !important;
+}
+.date-picker{
+    width: 400px;
+}

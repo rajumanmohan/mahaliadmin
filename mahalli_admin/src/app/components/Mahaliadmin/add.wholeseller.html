@@ -1,0 +1,172 @@
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    <logo-nav></logo-nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <!-- partial:partials/_settings-panel.html -->
+            <header-nav></header-nav>
+            <profile-nav></profile-nav>
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+
+            <!-- partial -->
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Add Wholeseller </h4>
+                                <a routerLink="/wholesellers" id="show" class="btn  btn-maron"
+                                    style="float: right;    margin-top: -45px;">Back</a>
+                                <form class="cmxform" id="signupForm" method="get" action="#">
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">First Name :</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="first_name"
+                                                        name="first_name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Last Name :</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="last_name"
+                                                        name="last_name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Phone num :</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="mobile"
+                                                        name="mobile" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Email :</label>
+                                                    <input class="form-control" type="email" [(ngModel)]="email"
+                                                        name="email" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 2 -->
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Password :</label>
+                                                    <input class="form-control" type="password" [(ngModel)]="password"
+                                                        name="password" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Bussiness Name :</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="bussiness_name"
+                                                        name="business_name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Bussiness House Number :</label>
+                                                    <input class="form-control" type="text"
+                                                        [(ngModel)]="bussiness_houseno" name="business_houseno" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Bussiness Address :</label>
+                                                    <input class="form-control" type="text"
+                                                        [(ngModel)]="bussiness_address" name="business_address" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 3 -->
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Bussiness Country :</label>
+                                                    <input class="form-control" type="text"
+                                                        [(ngModel)]="bussiness_country" name="business_country" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Bussiness Area :</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="bussiness_area"
+                                                        name="bussiness_area" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Bussiness City :</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="bussiness_city"
+                                                        name="bussiness_city" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Bussiness Pincode :</label>
+                                                    <input class="form-control" type="text"
+                                                        [(ngModel)]="bussiness_pincode" name="bussiness_pincode" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="firstname">Commision :</label>
+                                                    <input class="form-control" type="text"
+                                                        [(ngModel)]="commission_to_admin" name="commission_to_admin" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="firstname" name="prodName">Wholeseller Images :
+                                            </label>
+                                            <!-- <input class="form-control" type='file' (change)="onSelectFile($event,i)" multiple><br/>
+                                            <div *ngIf="!removeImg">
+                                                <img *ngFor='let url of skuValues.sku_images' [src]="url.sku_image" height="100" (click)="updateImage(url.id,url.sku_id,url.sku_image)"
+                                                    [ngClass]="{'selected':selectedImage==url.id}" width="100" style="margin-right: 2%;border: 1px solid;margin-bottom:5%">
+
+                                                <div *ngFor='let url of skuValues'>
+                                                    <img *ngFor="let imgUrl of url.sku_images;let i =index" [src]="imgUrl.sku_image" height="100" width="100" style="margin-right: 2%;border: 1px solid;margin-bottom:5%"
+                                                        (click)="updateImage(imgUrl.id)" [ngClass]="{'selected':selectedImage==imgUrl.id}">
+                                                </div>
+                                            </div> -->
+                                            <input class="form-control" type="file" multiple
+                                                (change)="detectFiles($event)">
+                                            <div>
+                                                <img *ngFor="let url of urls" [src]="url" class="rounded mb-3"
+                                                    width="180">
+                                            </div>
+                                        </div>
+                                        <input *ngIf="addWholeseller" class="btn btn-primary btn-seller" type="submit"
+                                            value="Add Wholeseller" (click)="addWholeSeller()" />
+                                        <input class="btn btn-primary btn-seller" type="submit"
+                                            value="update Wholeseller" (click)="updateWholeSeller()"
+                                            *ngIf="!addWholeseller" />
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019
+                        <a routerLink="#">Mahali </a>. All rights reserved. </span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+
+                    </span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

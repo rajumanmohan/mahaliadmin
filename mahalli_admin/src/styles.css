@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+ /* @import '~bootstrap/dist/css/bootstrap.css'; */
+/* @import '~bootstrap/dist/css/bootstrap.min.css';   */
+
+a {
+  cursor: pointer;
+}
+
+fieldset label {
+  /* color: #b83939; */
+}
+
+.remove {
+  margin-left: 2%;
+}
+.btn-maron .tab {
+    background: white !important;
+    color: pink !important;
+    border: 1px solid pink !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+
+ 

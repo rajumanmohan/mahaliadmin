@@ -1,0 +1,19 @@
+.logout{
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.dashboard-header{
+    font-family: initial;
+    padding: 20px;
+}
+.dashboard-header:hover{
+    color: #000;
+}
+.navbar-brand-wrapper{
+    background: #000;
+}
+.navbar-brand-wrapper img{
+    margin-top: 20px;
+}
